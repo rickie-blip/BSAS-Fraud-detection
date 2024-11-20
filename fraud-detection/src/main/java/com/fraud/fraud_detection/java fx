@@ -1,0 +1,52 @@
+package com.example;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+
+public class FraudDetectionApp extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Create main layout
+        BorderPane root = new BorderPane();
+
+        // Add navigation menu
+        VBox menu = new VBox();
+        menu.setSpacing(10);
+        menu.setStyle("-fx-padding: 10; -fx-background-color: #f4f4f4;");
+
+        Button dashboardBtn = new Button("Dashboard");
+        Button transactionsBtn = new Button("Transactions");
+        Button alertsBtn = new Button("Alerts");
+        Button settingsBtn = new Button("Settings");
+
+        menu.getChildren().addAll(dashboardBtn, transactionsBtn, alertsBtn, settingsBtn);
+
+        // Add content area
+        Label content = new Label("Welcome to Fraud Detection System");
+        content.setStyle("-fx-font-size: 16; -fx-padding: 20;");
+
+        // Dashboard action
+        dashboardBtn.setOnAction(e -> content.setText("Dashboard Content"));
+        transactionsBtn.setOnAction(e -> content.setText("Transactions Table"));
+        alertsBtn.setOnAction(e -> content.setText("Fraud Alerts"));
+        settingsBtn.setOnAction(e -> content.setText("System Settings"));
+
+        // Add to layout
+        root.setLeft(menu);
+        root.setCenter(content);
+
+        // Set scene
+        Scene scene = new Scene(root, 800, 600);
+        primaryStage.setTitle("Fraud Detection System");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
